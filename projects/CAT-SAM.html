@@ -231,7 +231,7 @@
 	<hr>
 
 	<table align=center width=850px>
-		<center><h1>Abstract</h1></center>
+		<center><h1><span style="font-size:24px">Abstract</span></h1></center>
 		<tr>
 			<td>
 				The recent Segment Anything Model (SAM) has demonstrated remarkable zero-shot capability and flexible geometric prompting in general image segmentation. However, SAM often struggles when handling various unconventional images, such as aerial, medical, and non-RGB images. This paper presents CAT-SAM, a ConditionAl Tuning network that adapts SAM toward various unconventional target tasks with just few-shot target samples. CAT-SAM freezes the entire SAM and adapts its mask decoder and image encoder simultaneously with a small number of learnable parameters. The core design is a prompt bridge structure that enables decoder-conditioned joint tuning of the heavyweight image encoder and the lightweight mask decoder. The bridging maps the prompt token of the mask decoder to the image encoder, fostering synergic adaptation of the encoder and the decoder with mutual benefits. We develop two representative tuning strategies for the image encoder which leads to two CAT-SAM variants: one injecting learnable prompt tokens in the input space and the other inserting lightweight adapter networks. Extensive experiments over 11 unconventional tasks show that both CAT-SAM variants achieve superior target segmentation performance consistently even under the very challenging one-shot adaptation setup. Code will be available.
@@ -241,11 +241,12 @@
 	<br>
 
 	<center>
-		<table align=center width=1000px>
+		<table align=center width=850px>
 			<tr>
-				<td width=1000px>
+				<td width=850px>
 					<center>
 						<img class="round" style="width:1000px" src="https://github.com/xiaoaoran/xiaoaoran.github.io/blob/master/images/papers/CAT-SAM.png"/>
+<!--						<img class="round" style="width:850px" src="../images/papers/CAT-SAM.png"/>-->
 					</center>
 				</td>
 			</tr>
@@ -270,7 +271,7 @@
 <!--	<hr>-->
 
 	<table align=center width=850px>
-		<center><h1>Citation</h1></center>
+		<center><h1><span style="font-size:24px">Citation</span></span></h1></center>
 		<tr>
 			<td>
 				Coming soon...
