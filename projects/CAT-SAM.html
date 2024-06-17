@@ -166,12 +166,17 @@
 			<table align=center width=600px>
                     <td align=center width=100px>
 						<center>
-							<span style="font-size:20px"><a href="https://ruijieren.com">Ruijie Ren<sup>2</sup></a></span>
+							<span style="font-size:20px"><a href="https://ruijieren.com">Ruijie Ren<sup>4</sup></a></span>
 						</center>
 					</td>
                     <td align=center width=100px>
 						<center>
-							<span style="font-size:20px"><a href="https://ieeexplore.ieee.org/author/37405025600">Xiaoqin Zhang<sup>4</sup></a></span>
+							<span style="font-size:20px"><a href="https://ieeexplore.ieee.org/author/37405025600">Xiaoqin Zhang<sup>5</sup></a></span>
+						</center>
+					</td>
+                    <td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.com/citations?user=z84rLjoAAAAJ&hl=en">Ling Shao<sup>6</sup></a></span>
 						</center>
 					</td>
                     <td align=center width=100px>
@@ -188,7 +193,7 @@
 			</table>
 			<table align=center width=350px>
 				<td align=center width=200px>
-					<span style="font-size:20px">Waseda University<sup>2</sup></span>
+					<span style="font-size:20px">The University of Tokyo<sup>2</sup></span>
 				</td>
 			</table>
 			<table align=center width=450px>
@@ -198,7 +203,17 @@
 			</table>
 			<table align=center width=450px>
 				<td align=center width=300px>
-					<span style="font-size:20px">Wenzhou University<sup>4</sup></span>
+					<span style="font-size:20px">Waseda University<sup>4</sup></span>
+				</td>
+			</table>
+			<table align=center width=450px>
+				<td align=center width=300px>
+					<span style="font-size:20px">Wenzhou University<sup>5</sup></span>
+				</td>
+			</table>
+			<table align=center width=450px>
+				<td align=center width=300px>
+					<span style="font-size:20px">UCAS-Terminus AI Lab, UCAS<sup>6</sup></span>
 				</td>
 			</table>
 			<table>
@@ -234,7 +249,7 @@
 		<center><h1><span style="font-size:24px">Abstract</span></h1></center>
 		<tr>
 			<td>
-				The recent Segment Anything Model (SAM) has demonstrated remarkable zero-shot capability and flexible geometric prompting in general image segmentation. However, SAM often struggles when handling various unconventional images, such as aerial, medical, and non-RGB images. This paper presents CAT-SAM, a ConditionAl Tuning network that adapts SAM toward various unconventional target tasks with just few-shot target samples. CAT-SAM freezes the entire SAM and adapts its mask decoder and image encoder simultaneously with a small number of learnable parameters. The core design is a prompt bridge structure that enables decoder-conditioned joint tuning of the heavyweight image encoder and the lightweight mask decoder. The bridging maps the prompt token of the mask decoder to the image encoder, fostering synergic adaptation of the encoder and the decoder with mutual benefits. We develop two representative tuning strategies for the image encoder which leads to two CAT-SAM variants: one injecting learnable prompt tokens in the input space and the other inserting lightweight adapter networks. Extensive experiments over 11 unconventional tasks show that both CAT-SAM variants achieve superior target segmentation performance consistently even under the very challenging one-shot adaptation setup.
+				The Segment Anything Model (SAM) has demonstrated remarkable zero-shot capability and flexible geometric prompting in general image segmentation. However, it often struggles in domains that are either sparsely represented or lie outside its training distribution, such as aerial, medical, and non-RGB images. Recent efforts have predominantly focused on adapting SAM to these domains using fully supervised methods, which necessitate large amounts of annotated training data and pose practical challenges in data collection. This paper presents CAT-SAM, a ConditionAl Tuning network that explores \textit{few-shot} adaptation of SAM toward various challenging downstream domains in a data-efficient manner. The core design is a \textit{prompt bridge} structure that enables \textit{decoder-conditioned joint tuning} of the heavyweight image encoder and the lightweight mask decoder. The bridging maps the domain-specific features of the mask decoder to the image encoder, fostering synergic adaptation of both components with mutual benefits with few-shot target samples only, ultimately leading to superior segmentation in various downstream tasks. We develop two CAT-SAM variants that adopt two tuning strategies for the image encoder: one injecting learnable prompt tokens in the input space and the other inserting lightweight adapter networks. Extensive experiments over 11 downstream tasks show that CAT-SAM achieves superior segmentation consistently even under the very challenging one-shot adaptation setup.
 			</td>
 		</tr>
 	</table>
@@ -277,7 +292,7 @@
 				<pre>
 		@article{xiao2024cat,
 		  title={CAT-SAM: Conditional Tuning Network for Few-Shot Adaptation of Segmentation Anything Model},
-		  author={Xiao, Aoran and Xuan, Weihao and Qi, Heli and Xing, Yun and Ren, Ruijie and Zhang, Xiaoqin and Lu, Shijian},
+		  author={Xiao, Aoran and Xuan, Weihao and Qi, Heli and Xing, Yun and Ren, Ruijie and Zhang, Xiaoqin and Ling, Shao and Lu, Shijian},
 		  journal={arXiv preprint arXiv:2402.03631},
 		  year={2024}
 		}
