@@ -138,7 +138,7 @@
 <body>
 	<br>
 	<center>
-		<span style="font-size:30px"><b>[ECCV2024] CAT-SAM: Conditional Tuning <br>for Few-Shot Adaptation of Segment Anything Model</b></span>
+		<span style="font-size:30px"><b>[ECCV2024 (Oral)] CAT-SAM: Conditional Tuning <br>for Few-Shot Adaptation of Segment Anything Model</b></span>
 		<table align=center width=600px>
 			<table align=center width=600px>
 				<tr>
@@ -249,25 +249,126 @@
 		<center><h1><span style="font-size:24px">Abstract</span></h1></center>
 		<tr>
 			<td>
-				The Segment Anything Model (SAM) has demonstrated remarkable zero-shot capability and flexible geometric prompting in general image segmentation. However, it often struggles in domains that are either sparsely represented or lie outside its training distribution, such as aerial, medical, and non-RGB images. Recent efforts have predominantly focused on adapting SAM to these domains using fully supervised methods, which necessitate large amounts of annotated training data and pose practical challenges in data collection. This paper presents CAT-SAM, a ConditionAl Tuning network that explores \textit{few-shot} adaptation of SAM toward various challenging downstream domains in a data-efficient manner. The core design is a \textit{prompt bridge} structure that enables \textit{decoder-conditioned joint tuning} of the heavyweight image encoder and the lightweight mask decoder. The bridging maps the domain-specific features of the mask decoder to the image encoder, fostering synergic adaptation of both components with mutual benefits with few-shot target samples only, ultimately leading to superior segmentation in various downstream tasks. We develop two CAT-SAM variants that adopt two tuning strategies for the image encoder: one injecting learnable prompt tokens in the input space and the other inserting lightweight adapter networks. Extensive experiments over 11 downstream tasks show that CAT-SAM achieves superior segmentation consistently even under the very challenging one-shot adaptation setup.
+				The Segment Anything Model (SAM) has demonstrated remarkable zero-shot capability and flexible geometric prompting in general image segmentation. However, it often struggles in domains that are either sparsely represented or lie outside its training distribution, such as aerial, medical, and non-RGB images. Recent efforts have predominantly focused on adapting SAM to these domains using fully supervised methods, which necessitate large amounts of annotated training data and pose practical challenges in data collection. This paper presents CAT-SAM, a ConditionAl Tuning network that explores <i>few-shot</i> adaptation of SAM toward various challenging downstream domains in a data-efficient manner. The core design is a <i>prompt bridge</i> structure that enables <i>decoder-conditioned joint tuning</i> of the heavyweight image encoder and the lightweight mask decoder. The bridging maps the domain-specific features of the mask decoder to the image encoder, fostering synergic adaptation of both components with mutual benefits with few-shot target samples only, ultimately leading to superior segmentation in various downstream tasks. We develop two CAT-SAM variants that adopt two tuning strategies for the image encoder: one injecting learnable prompt tokens in the input space and the other inserting lightweight adapter networks. Extensive experiments over 11 downstream tasks show that CAT-SAM achieves superior segmentation consistently even under the very challenging one-shot adaptation setup.
 			</td>
 		</tr>
 	</table>
 	<br>
 
+	<hr>
+
 	<center>
-		<table align=center width=850px>
+		<table align=center width=1000px>
+		<center><h1><span style="font-size:24px">Method</span></h1></center>
 			<tr>
-				<td width=850px>
+				<td width=1000px>
 					<center>
 <!--						<img class="round" style="width:1000px" src="https://github.com/xiaoaoran/xiaoaoran.github.io/blob/master/images/papers/CAT-SAM.png"/>-->
-						<img class="round" style="width:850px" src="../images/papers/CAT-SAM.png"/>
+						<img class="round" style="width:1000px" src="../images/papers/CAT-SAM.png"/>
 					</center>
 				</td>
 			</tr>
 		</table>
-	</center>
 
+	<hr>
+
+		<div style="text-align: center;">
+		<center><h1><span style="font-size:24px">Experiments</span></h1></center>
+			<table border="1" style="margin: auto">
+				<center>
+				<thead>
+					<tr>
+						<th>Model</th>
+						<th>#Tuning Sample</th>
+						<th>WHU (IoU&uarr;)</th>
+						<th>Kvasir (mIoU&uarr;)</th>
+						<th>SBU-Shadow (BER&darr;)</th>
+						<th>JSRT (mIoU&uarr;)</th>
+						<th>FLS (mIoU&uarr;)</th>
+						<th>HRSID (AP&uarr;)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>SAM</td>
+						<td>-</td>
+						<td>43.5</td>
+						<td>79.0</td>
+						<td>62.4</td>
+						<td>78.5</td>
+						<td>69.7</td>
+						<td>38.2</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-T</td>
+						<td rowspan="2">1-shot</td>
+						<td>86.8</td>
+						<td>83.4</td>
+						<td>78.0</td>
+						<td>93.0</td>
+						<td>N/A</td>
+						<td>46.2</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-A</td>
+						<td>88.2</td>
+						<td>85.4</td>
+						<td>81.9</td>
+						<td>92.6</td>
+						<td>N/A</td>
+						<td>44.9</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-T</td>
+						<td rowspan="2">16-shots</td>
+						<td>89.6</td>
+						<td>93.1</td>
+						<td>4.04</td>
+						<td>94.2</td>
+						<td>73.2</td>
+						<td>46.2</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-A</td>
+						<td>90.3</td>
+						<td>93.6</td>
+						<td>3.80</td>
+						<td>93.5</td>
+						<td>71.4</td>
+						<td>45.7</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-T</td>
+						<td rowspan="2">Full-shots</td>
+						<td>93.3</td>
+						<td>94.5</td>
+						<td>2.54</td>
+						<td>94.4</td>
+						<td>81.7</td>
+						<td>51.4</td>
+					</tr>
+					<tr>
+						<td>CAT-SAM-A</td>
+						<td>93.6</td>
+						<td>94.3</td>
+						<td>2.39</td>
+						<td>94.6</td>
+						<td>82.0</td>
+						<td>52.9</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	<hr>
+
+		<center><h1><span style="font-size:24px">Visual Results</span></h1></center>
+		<figure>
+  			<p><img src="../images/papers/CAT-SAM-QualitativeResults.png" width="1000" alt="Eiffel tower">
+  			<figcaption>
+    			Visual comparisons of SAM (top row) and CAT-SAM (bottom row). We illustrate samples from WHU for building segmentation, MA. Roads for road segmentation, SBU-Shadow for shadow segmentation, Kvasir for polyp segmen- tation, JSRT for chest organ segmentation (X-ray images), FLS for marine debris segmentation (Sonar images), and HRSID for ship instance segmentation (SAR images). CAT-SAM exhibits one-shot adaptation across most datasets, except for 16-shot over FLS. Red boxes and stars denote geometric prompts, colored regions are mask predictions, and lines show the boundary of ground truth segmentation.
+		    </figcaption>
+		</figure>
 	<hr>
 <!--	<center><h1>Talk</h1></center>-->
 <!--	<p align="center">-->
