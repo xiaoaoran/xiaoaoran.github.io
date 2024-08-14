@@ -1,0 +1,285 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>MM-SAM</title>
+	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="CAT-SAM: Conditional Tuning Network for Few-Shot Adaptation of Segmentation Anything Model" />
+	<meta property="og:description" content="Paper description." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:30px"><b>Segment Anything with Multiple Modalities</b></span>
+		<table align=center width=800px>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://xiaoaoran.github.io">Aoran Xiao<sup>1&#10030</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://weihaoxuan.com">Weihao Xuan<sup>2,3&#10030</sup></a></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.co.jp/citations?user=CH-rTXsAAAAJ&hl=en">Heli Qi<sup>4</sup></a></a></span>
+						</center>
+					</td>
+			</table>
+			<table align=center width=600px>
+                    <td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.co.jp/citations?user=uOAYTXoAAAAJ&hl=en">Yun Xing<sup>1</sup></a></span>
+						</center>
+					</td>
+                    <td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.co.jp/citations?user=DJ2KOn8AAAAJ&hl=en">Naoto Yokoya<sup>2,3&#9993</sup></a></span>
+						</center>
+					</td>
+                    <td align=center width=100px>
+						<center>
+							<span style="font-size:20px"><a href="https://scholar.google.com/citations?user=uYmK-A0AAAAJ&hl=en">Shijian Lu<sup>1&#9993</sup></a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=550px>
+				<td align=center width=350px>
+					<span style="font-size:20px">Nanyang Technological University, Singapore<sup>1</sup></span>
+				</td>
+			</table>
+			<table align=center width=350px>
+				<td align=center width=200px>
+					<span style="font-size:20px">The University of Tokyo, Japan<sup>2</sup></span>
+				</td>
+			</table>
+			<table align=center width=350px>
+				<td align=center width=200px>
+					<span style="font-size:20px">RIKEN AIP, Japan<sup>3</sup></span>
+				</td>
+			</table>
+			<table align=center width=450px>
+				<td align=center width=300px>
+					<span style="font-size:20px">Nara Institute of Science and Technology, Japan<sup>4</sup></span>
+				</td>
+			</table>
+			<table>
+				<td align=center width=300px>
+					<span style="font-size:16px"><sup>&#10030</sup>Equally contributing first authors</span>
+				</td>
+				<td align=center width=300px>
+					<span style="font-size:16px"><sup>&#9993</sup>Co-corresponding authors</span>
+				</td>
+			</table>
+			<table align=center width=250px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:20px"><a href='https://arxiv.org/abs/2402.03631'>[arXiv]</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:20px">[code]</span>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<hr>
+
+	<table align=center width=850px>
+		<center><h1><span style="font-size:24px">Abstract</span></h1></center>
+		<tr>
+			<td>
+				Robust and accurate segmentation of scenes has become one core functionality in various visual recognition and navigation tasks. This has inspired the recent development of Segment Anything Model (SAM), a foundation model for general mask segmentation. However, SAM is largely tailored for single-modal RGB images, limiting its applicability to multi-modal data captured with widely-adopted sensor suites, such as LiDAR plus RGB, depth plus RGB, thermal plus RGB, etc. We develop MM-SAM, an extension and expansion of SAM that supports cross-modal and multi-modal processing for robust and enhanced segmentation with different sensor suites. MM-SAM features two key designs, namely, unsupervised cross-modal transfer and weakly-supervised multi-modal fusion, enabling label-efficient and parameter-efficient adaptation toward various sensor modalities. It addresses three main challenges: 1) adaptation toward diverse non-RGB sensors for single-modal processing, 2) synergistic processing of multi-modal data via sensor fusion, and 3) mask-free training for different downstream tasks. Extensive experiments show that MM-SAM consistently outperforms SAM by large margins, demonstrating its effectiveness and robustness across various sensors and data modalities.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+		<center><h1><span style="font-size:24px">Method</span></h1></center>
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-Objective.png" width="1000" alt="Objective">
+  			<figcaption>
+    			MM-SAM extends and expands SAM towards multi-modal data with various sensor suites, facilitating cross-modal and multi-modal segmentation without requiring mask annotations in different downstream tasks.
+		    </figcaption>
+		</figure>
+
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-Pipeline.png" width="1000" alt="Objective">
+  			<figcaption>
+    			Overview of MM-SAM. MM-SAM  freezes the entire SAM architecture while tuning it with multi-modal pairs (RGB and non-RGB modal X) for achieving cross-modal and multi-modal segmentation. It consists of two novel tuning modules: 1) Unsupervised Cross-Modal Transfer (UCMT) introduces modality-specific patch embedding module and low-rank (LoRA) structures into SAM’s image encoder for extracting modality-specific X embeddings. An embedding unification loss ($L_U$) aligns X embeddings with SAM’s RGB image embeddings to ensure segmentation compatibility; 2) Weakly-supervised Multi-Modal Fusion (WMMF) incorporates Selective Fusion Gate (SFG) to generate multi-modal embeddings, trained with multi-modal pseudo-labeling for adaptive sensor fusion. The whole training is mask-free. During inference, MM-SAM supports segmentation for single or multiple modality data.
+		    </figcaption>
+		</figure>
+
+	<hr>
+		<center><h1><span style="font-size:24px">Experiments</span></h1></center>
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-tasks.png" width="1000" alt="Objective">
+		</figure>
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-result1.png" width="1000" alt="Objective">
+		</figure>
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-result2.png" width="1000" alt="Objective">
+		</figure>
+		<figure>
+  			<p><img src="../images/papers/MM-SAM-Visual.png" width="1000" alt="Objective">
+		</figure>
+
+
+	<hr>
+
+	<table align=center width=850px>
+		<center><h1><span style="font-size:24px">Citation</span></span></h1></center>
+		<tr>
+			<td>
+				<pre>
+		Coming soon.
+				</pre>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+<br>
+</body>
+</html>
